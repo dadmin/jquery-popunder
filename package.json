@@ -1,7 +1,7 @@
 {
   "name": "@codevadmin/jquery-popunder",
   "description": "jquery-plugin to create popunder in major browsers.",
-  "version": "1.0.0",
+  "version": "0.3.1",
   "main": "dist/jquery-popunder",
   "keywords": [
     "popunder"
