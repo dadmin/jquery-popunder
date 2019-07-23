@@ -1,7 +1,7 @@
 jquery-popunder
 =====
 
-**jquery-popunder** is a jquery-plugin to create popunder in major browsers.
+**jquery-popunder** is a jquery-plugin to create popunder in major browsers. This is jquery-popunder commonjs implementation.
 
 Usage
 -----
@@ -50,19 +50,17 @@ Known Issues
 
 Installation
 -------
-Just copy the dist/jquery.popunder.min.js file into your project or use bower:
-
-    bower install jquery-popunder
-
-or add it to your bower.json.
+- With yarn and save dependency (```-S``` flag) in package.json:
+```shell
+    yarn add @codevadmin/jquery-popunder@latest -S
+```
+- With npm and save dependency (```-S``` flag) in package.json:
+```shell
+    npm i -S @codevadmin/jquery-popunder@latest
+```
+- Without any package manager. Just copy ```dist/jquery.popunder.min.js``` to your library folder.
 
 Dependencies
 -------
 - (optional) jquery (http://www.jquery.com)
 - (optional) js-cookie (https://github.com/js-cookie/js-cookie)
-
-The dependencies can be installed using bower
-
-    bower update
-
-When you're not using jquery, you could use dist/popunder.min.js, which includes a stripped version of jquery. Mind, that there is no real selector-engine included, which limits element-selection in oldie to #ids.
