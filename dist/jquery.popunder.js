@@ -1,11 +1,11 @@
 (function( factory ) {
     if (typeof exports === 'object' && typeof module !== 'undefined') {
-        factory(require('jquery'), window, screen, navigator, document, exports);
+        module.exports = factory(require('jquery'), window, screen, navigator, document);
     } else {
         // Browser using plain <script> tag
         factory(jQuery, window, screen, navigator, document);
     }
-}(function($, window, screen, navigator, document, exports){
+}(function(jQuery, window, screen, navigator, document){
     "use strict";
 
     /**
@@ -18,8 +18,8 @@
      *
      * @return jQuery
      */
-    $.popunder = function (popunderStack, form, trigger, event) {
-        var t = $.popunder.helper;
+    jQuery.popunder = function (popunderStack, form, trigger, event) {
+        var t = jQuery.popunder.helper;
 
         t.init();
         if (typeof Cookies !== t.u) {
@@ -28,8 +28,8 @@
 
         if (arguments.length === 0) {
             popunderStack = window.aPopunder;
-        } else if (typeof popunderStack !== t.fu && $(popunderStack).is('a')) {
-            event = $.Event('click', {
+        } else if (typeof popunderStack !== t.fu && jQuery(popunderStack).is('a')) {
+            event = jQuery.Event('click', {
                 'target': popunderStack
             });
             popunderStack = window.aPopunder;
@@ -50,11 +50,11 @@
             }
         }
 
-        return $;
+        return jQuery;
     };
 
     /* several helper functions */
-    $.popunder.helper = {
+    jQuery.popunder.helper = {
 
         /**
          * Method names
@@ -236,7 +236,7 @@
         /**
          * Set the popunder-method by parsing the agent, init hive
          *
-         * @return $.popunder.helper
+         * @return jQuery.popunder.helper
          */
         init: function () {
             var t = this;
@@ -264,7 +264,7 @@
          * @param  {Array} popunderStack The popunder(s) to open
          * @param  {jQuery.Event} eventSource The source of the event
          *
-         * @return $.popunder.helper
+         * @return jQuery.popunder.helper
          */
         queue: function (popunderStack, eventSource) {
             var b = false,
@@ -294,25 +294,25 @@
          * @param  {string|jQuery} form A form, where the submit is used to open the popunder
          * @param  {string|jQuery} trigger A button, where the mousedown & click is used to open the popunder
          *
-         * @return $.popunder.helper
+         * @return jQuery.popunder.helper
          */
         bindEvents: function (popunderStack, form, trigger) {
             var t = this,
                 s = 'string',
                 c = function (event) {
-                    $.popunder(event.data.stack, false, false, event);
+                    jQuery.popunder(event.data.stack, false, false, event);
                     return true;
                 };
 
             if (form && t.m !== t.SWITCHER) {
-                form = (typeof form === s) ? $(form) : form;
+                form = (typeof form === s) ? jQuery(form) : form;
                 form.on('submit.' + t.ns, {
                     stack: popunderStack
                 }, c);
             }
 
             if (trigger) {
-                trigger = (typeof trigger === s) ? $(trigger) : trigger;
+                trigger = (typeof trigger === s) ? jQuery(trigger) : trigger;
                 trigger.on('click.' + t.ns, {
                     stack: popunderStack
                 }, c);
@@ -376,7 +376,7 @@
          */
         open: function (url, opts, stackLength, event) {
             var t = this,
-                i, o = $.extend(true, {}, t.def, opts);
+                i, o = jQuery.extend(true, {}, t.def, opts);
 
             t.o = url;
             if (top !== window.self) {
@@ -421,7 +421,7 @@
                                 } catch (err) {
                                 }
                             };
-                        }($.extend(true, {}, t)), 0);
+                        }(jQuery.extend(true, {}, t)), 0);
                     } else {
                         t.lastWin = (t._top.window.open(t.o, t.rand(o.name, !opts.name), t.getOptions(o.window)) || t.lastWin);
                     }
@@ -441,7 +441,7 @@
         /**
          * Move a popup to the background
          *
-         * @return $.popunder.helper
+         * @return jQuery.popunder.helper
          */
         bg: function () {
             var t = this;
@@ -469,7 +469,7 @@
             /**
              * Classic popunder, used for ie
              *
-             * @param  {$.popunder.helper} t
+             * @param  {jQuery.popunder.helper} t
              *
              * @return void
              */
@@ -526,9 +526,9 @@
          * Set the popunder's url
          *
          * @param  {int|boolean} stackLength True, if the url should be set
-         * @param  {$.popunder.helper} t
+         * @param  {jQuery.popunder.helper} t
          *
-         * @return $.popunder.helper
+         * @return jQuery.popunder.helper
          */
         href: function (stackLength, t) {
             if (stackLength && t.lastTarget && t.lastWin && t.lastTarget !== t.b && t.lastTarget !== t.o) {
@@ -549,7 +549,7 @@
         getElementUrl: function (event, returnEvenIfNotBlank) {
             var t = this,
                 sel = ':submit, button',
-                $target = $(event.target),
+                $target = jQuery(event.target),
                 $f, s, m,
                 notBlank = (typeof returnEvenIfNotBlank === t.u);
 
@@ -560,7 +560,7 @@
                 $target = $target.parents(sel);
                 $f = $target.parents('form');
             } else {
-                $f = $(event.target.form);
+                $f = jQuery(event.target.form);
                 if ($target.is(sel) && (!$f || !$f.length)) {
                     $f = $target.parents('form');
                 }
@@ -579,7 +579,7 @@
         /**
          * Reset the instance
          *
-         * @return $.popunder.helper
+         * @return jQuery.popunder.helper
          */
         reset: function () {
             var t = this;
@@ -592,7 +592,7 @@
         /**
          * Unbind a popunder-handler
          *
-         * @return $.popunder.helper
+         * @return jQuery.popunder.helper
          */
         unbind: function (form, trigger) {
             var t = this,
@@ -600,12 +600,12 @@
 
             t.reset();
             if (!!form) {
-                form = (typeof form === s) ? $(form) : form;
+                form = (typeof form === s) ? jQuery(form) : form;
                 form.off('submit.' + t.ns);
             }
 
             if (!!trigger) {
-                trigger = (typeof trigger === s) ? $(trigger) : trigger;
+                trigger = (typeof trigger === s) ? jQuery(trigger) : trigger;
                 trigger.off('click.' + t.ns).next('.jq-pu object').remove();
                 trigger.unwrap();
             }
@@ -631,12 +631,5 @@
         }
     };
 
-
-    if (typeof exports === 'object') {
-        Object.defineProperty(exports, "__esModule", {
-            value: true
-        });
-
-        exports.default = $;
-    }
+    return jQuery;
 }));
