@@ -1,8 +1,8 @@
 {
-  "name": "@codevadmin/jquery.popunder",
+  "name": "@codevadmin/jquery-popunder",
   "description": "jquery-plugin to create popunder in major browsers. This is commonjs implemetation",
   "version": "0.4.0",
-  "main": "dist/jquery-popunder",
+  "main": "dist/jquery.popunder",
   "keywords": [
     "popunder"
   ],
