@@ -51,23 +51,23 @@ Known Issues
 Installation
 -------
 With yarn and save dependency (```-S``` flag) in package.json:
-```shell
-    yarn add @codevadmin/jquery-popunder@latest -S
+```bash
+yarn add @codevadmin/jquery-popunder@latest -S
 ```
 With npm and save dependency (```-S``` flag) in package.json:
-```shell
-    npm i @codevadmin/jquery-popunder@latest -S
+```bash
+npm i @codevadmin/jquery-popunder@latest -S
 ```
 Without any package manager. Just copy ```dist/jquery.popunder.min.js``` to your library folder.
 
 Usages with Webpack
 -------
-```
-    import $ from '@codevadmin/jquery-popunder';
+```js
+import $ from '@codevadmin/jquery-popunder';
 
-    $(() => {
-        $.popunder();
-    });
+$(() => {
+    $.popunder();
+});
 ```
 
 Dependencies
